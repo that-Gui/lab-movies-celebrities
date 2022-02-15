@@ -5,7 +5,7 @@ const Movie = require('../models/Movie.model');
 const Celebrity = require('../models/Celebrity.model');
 
 router.get('/movies', (req, res, next) => {
-  Movie.find().then( (moviesarr) => res.render('./movies/movies.hbs', {moviesarr})).catch(err => next(err));
+  Movie.find().then( (moviesarr) => res.render('./movies/movies.hbs', { moviesarr })).catch(err => next(err));
 });
 
 router.get('/movies/create', (req, res, next) => {
@@ -18,6 +18,11 @@ router.post('/movies/create', (req, res, next) => {
   Movie.create({ title, genre, plot, cast }).then((Element) =>{ 
     console.log(Element);
     res.redirect('/movies')}).catch(err => next(err));
+});
+
+router.get('/movies/:id/', (req, res, next) => {
+  const { id } = req.params;
+  Movie.findById(id).populate('cast').then( (movdets) => res.render('./movies/movie-details.hbs', { movdets })).catch(err => next(err));
 });
 
 

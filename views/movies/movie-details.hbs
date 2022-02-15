@@ -1,0 +1,13 @@
+{{!-- movie details page --}}
+<h1>{{movdets.title}} details page</h1>
+<hr>
+<div>
+<h3>{{movdets.title}}</h3>
+<p>{{movdets.genre}}</p>
+<p>{{movdets.plot}}</p>
+{{#each movdets.cast}}
+    <p>{{this.name}}</p>
+    <p>{{this.occupation}}</p>
+    <p>{{this.catchPhrase}}</p>
+{{/each}}
+</div>
