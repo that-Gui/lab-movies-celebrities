@@ -11,3 +11,11 @@
     <p>{{this.catchPhrase}}</p>
 {{/each}}
 </div>
+<hr>
+<div>
+<form action="/movies/{{movdets._id}}/delete" method="post">
+
+    <button type="submit">Delete this movie from the DB</button>
+
+</form>
+</div>
