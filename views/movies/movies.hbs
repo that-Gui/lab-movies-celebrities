@@ -1,12 +1,12 @@
 {{!-- this is the movies page --}}
 <h1>Movies</h1>
+<hr>
+<a href="/movies/create">Add a Flick</a>
+<hr>
 <div>
-{{#each Movie}}
+{{#each moviesarr}}
     <h3>{{title}}</h3>
-    <p>{{genre}}</p>
-    <p>{{plot}}</p>
-    {{#each}}
-    <p>{{cast}}</p>
-    {{/each}}
+     <a href='/movies/{{this._id}}'>more info</a>
+     <hr>
 {{/each}}
 </div>

@@ -1,6 +1,7 @@
 {{!-- new movie form --}}
 <h1>Add a new Flick</h1>
 
+<div>
 <form action="/movies/create" method="post">
     <label>title</label>
     <input type="text" name="title" />
@@ -11,13 +12,15 @@
     <label>plot</label>
     <input type="text" name="plot" />
 
-    <label for="cars">Cast</label>
-    {{#each Celebrity}}
-        <select name="cast" multiple></select>
-        <option value="{{this._id}}"> {{this.name}} </option>
-        </select>
+    <label for="cast">Cast</label>
+    <select name="cast" multiple>
+    {{#each celebarr}}
+    <option value="{{this._id}}"> {{this.name}} </option>
     {{/each}}
+    </select>
+    
     
     <button type="submit">Add new Movie to BD</button>
 
 </form>
+</div>

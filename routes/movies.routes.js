@@ -2,20 +2,22 @@
 const { Router } = require("express");
 const router = require("express").Router();
 const Movie = require('../models/Movie.model');
+const Celebrity = require('../models/Celebrity.model');
 
 router.get('/movies', (req, res, next) => {
-  Movie.find().then( (arr) => res.render('./movies/movies', {Movie:arr}));
+  Movie.find().then( (moviesarr) => res.render('./movies/movies.hbs', {moviesarr})).catch(err => next(err));
 });
 
 router.get('/movies/create', (req, res, next) => {
-  res.render('./movies/new-movie.hbs');
+  Celebrity.find().then( (celebarr) =>  res.render('./movies/new-movie.hbs', { celebarr })).catch(err => next(err));
 });
 
 router.post('/movies/create', (req, res, next) => {
   const { title, genre, plot, cast } = req.body;
  
-  Movie.create({ title, genre, plot, cast }).then((Element) => res.redirect('/movies'))
-    .catch(err => next(err));
+  Movie.create({ title, genre, plot, cast }).then((Element) =>{ 
+    console.log(Element);
+    res.redirect('/movies')}).catch(err => next(err));
 });
 
 
