@@ -1,0 +1,24 @@
+{{!-- movie edit page --}}
+{{!-- movie details page --}}
+<h1>{{movdets.title}} edit page</h1>
+<hr>
+<div>
+<form action="/movies/{{movdets._id}}/edit" method="post">
+    <label for="title">title</label>
+    <input type="text" name="title" value="{{movdets.title}}"/>
+    <hr>
+    <label for="genre">genre</label>
+    <input type="text" name="genre" value="{{movdets.genre}}"/>
+    <hr>
+    <label for="plot">plot</label>
+    <input type="text" name="plot" value="{{movdets.plot}}"/>
+    <hr>
+    <label for="cast">Cast</label>
+    <select name="cast" multiple>
+    {{#each celebarr}}
+    <option value="{{this._id}}"> {{this.name}} </option>
+    {{/each}}
+    </select>
+    <hr>
+    <button type="submit">Submit new details Movie to BD</button>
+</form>
